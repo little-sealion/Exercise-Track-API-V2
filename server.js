@@ -63,7 +63,11 @@ app.get('/api/users', (req,res) => {
 app.post('/api/users/:_id/exercises',(req,res) => {
   const {_id} = req.params;
   const {description, duration} = req.body;
-  const date = req.body.date == ''?new Date().toDateString():new Date(req.body.date).toDateString();
+  if(req.body.date === '' || req.body.date === undefined){
+    date = new Date().toDateString()
+  }else{
+    date = new Date(req.body.date).toDateString();
+  }
   let newExercise = {description,duration:parseInt(duration),date}
 
   userExercise.findOneAndUpdate(
