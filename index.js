@@ -110,7 +110,7 @@ app.get('/api/users/:_id/logs', (req,res) => {
  
 
 // start server listening 
-const listener = app.listen(process.env.PORT || 3000, () => {
+const listener = app.listen(3000, () => {
   console.log('Your app is listening on port ' + listener.address().port)
 })
 
